@@ -41,6 +41,11 @@ jobs:
     - name: Install dependencies
       run: |
         uv pip install .[dev,cov] --system ${{ matrix.pip-pre }}
+    - name: Install Platypus master
+      run: |
+        git clone https://github.com/Project-Platypus/Platypus
+        cd Platypus
+        uv pip install . --system
     - name: Install MPI and mpi4py
       if: matrix.test-mpi == true
       run: |
